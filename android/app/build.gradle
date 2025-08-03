@@ -83,7 +83,20 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
+
+        ndk {
+        abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64" 
+    }
+    }
+
+     splits {
+        abi {
+            reset()
+            enable true
+            universalApk true  // If true, also generate a universal APK
+            include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+        }
     }
     signingConfigs {
         debug {

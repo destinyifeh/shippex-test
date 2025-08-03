@@ -1,39 +1,50 @@
 import { useNavigation } from '@react-navigation/native';
-import { ArrowLeft } from 'lucide-react-native';
+import { ChevronLeft } from 'lucide-react-native';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import {
-    COLOUR_BLACK,
-    FONT_FAMILY_BODY_BOLD,
-    FONT_FAMILY_BODY_SEMIBOLD
-} from '../constants';
+  COLOUR_BLACK,
+  FONT_FAMILY_BODY_BOLD,
+  FONT_FAMILY_BODY_SEMIBOLD,
+} from '../contsants/style';
 
 export default function HeaderWrapper({
   title,
   children,
   contentContainerStyle,
-}:{title:string, children:React.ReactNode, contentContainerStyle:any}) {
+}: {
+  title?: string;
+  children: React.ReactNode;
+  contentContainerStyle: any;
+}) {
   const navigation = useNavigation();
 
   return (
-    <View style={{flex: 1, backgroundColor:COLOUR_BLACK}}>
-      <View style={{marginTop: 40, flex: 1}}>
+    <View style={{ flex: 1, backgroundColor: 'black' }}>
+      <View style={{ marginTop: 40, flex: 1 }}>
         {/* <View style={styles.headerTextIconContainer}>
           
           <Text style={styles.headerText}>{title}</Text>
         </View> */}
         <View style={styles.headerViewDesign}></View>
 
-        <View style={[styles.headerMainView, {...contentContainerStyle}]}>
-            <View style={{flexDirection:"row", alignItems:"center", gap:2,position:"absolute", left: 15, top:10, zIndex:10
-            }}>
-                <TouchableOpacity
-            style={{}}
-            onPress={() => navigation.goBack()}>
- <ArrowLeft size={20} color="black"/> 
-        </TouchableOpacity>
-         <Text>Cancel</Text>  
-            </View>
+        <View style={[styles.headerMainView, { ...contentContainerStyle }]}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 2,
+              position: 'absolute',
+              left: 15,
+              top: 10,
+              zIndex: 10,
+            }}
+          >
+            <ChevronLeft size={25} color="#2F50C1" />
+
+            <Text style={{ color: '#2F50C1' }}>Cancel</Text>
+          </TouchableOpacity>
 
           {children}
         </View>
@@ -60,7 +71,7 @@ const styles = StyleSheet.create({
     height: 10,
     width: '93%',
     alignSelf: 'center',
-    backgroundColor: 'purple',
+    backgroundColor: '#2F50C1',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
